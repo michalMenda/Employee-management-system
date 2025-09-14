@@ -1,172 +1,86 @@
 # Employee Management System
 
-מערכת ניהול עובדים מלאה הבנויה עם React ו-NestJS.
+## Overview
+This project implements a complete employee management system connecting a React client, NestJS server, and PostgreSQL database. The system enables management of employees with full CRUD operations.
 
-## תיאור הפרויקט
+## Architecture
+The project follows a three-tier architecture:
 
-מערכת ניהול עובדים המאפשרת:
-- הצגת רשימת עובדים
-- הוספת עובדים חדשים
-- עדכון פרטי עובדים
-- מחיקת עובדים
-- ניהול סטטוס פעילות עובדים
+- **Presentation Layer**: React with TypeScript (client-side)
+- **Logic Layer**: NestJS with TypeScript (server-side)
+- **Data Layer**: PostgreSQL with Prisma ORM (database)
 
-## טכנולוגיות
+## Environment Setup
 
-### Frontend (Client)
-- **React 18** - ספריית UI
-- **TypeScript** - שפת תכנות
-- **Vite** - כלי בנייה ופיתוח
-- **Chakra UI** - ספריית רכיבי UI
-- **TanStack Query** - ניהול state ו-API calls
-- **Axios** - HTTP client
-- **Framer Motion** - אנימציות
+### .env File
+Create an `.env` file in the `Server` directory with the following parameters:
 
-### Backend (Server)
-- **NestJS** - Node.js framework
-- **TypeScript** - שפת תכנות
-- **Prisma** - ORM
-- **PostgreSQL** - מסד נתונים
-- **Class Validator** - ולידציה
-- **Class Transformer** - טרנספורמציה של נתונים
-
-## מבנה הפרויקט
-
-```
-Employee-management-system/
-├── Client/                 # React frontend
-│   ├── src/
-│   │   ├── components/     # רכיבי React
-│   │   ├── style/         # קבצי CSS
-│   │   └── ...
-│   └── package.json
-├── Server/                # NestJS backend
-│   ├── src/
-│   │   ├── workers/       # מודול עובדים
-│   │   ├── database/      # הגדרות מסד נתונים
-│   │   └── ...
-│   ├── prisma/           # סכמת מסד נתונים
-│   └── package.json
-└── README.md
-```
-
-## התקנה והרצה
-
-### דרישות מוקדמות
-- Node.js (גרסה 18 ומעלה)
-- PostgreSQL
-- npm או yarn
-
-### הגדרת הפרויקט
-
-1. **שכפול הפרויקט:**
-```bash
-git clone <repository-url>
-cd Employee-management-system
-```
-
-2. **התקנת תלויות:**
-
-**Backend:**
-```bash
-cd Server
-npm install
-```
-
-**Frontend:**
-```bash
-cd Client
-npm install
-```
-
-3. **הגדרת מסד נתונים:**
-
-צור קובץ `.env` בתיקיית Server:
+**Database connection details**
 ```env
 DATABASE_URL="postgresql://username:password@localhost:5432/employee_db"
 ```
 
-הרץ migrations:
+**Server settings**
+```env
+PORT=3000                 # Server port
+NODE_ENV=development      # Runtime environment
+```
+
+## API Routes
+The server provides the following API routes:
+
+### Employees
+- `GET /workers` - Get list of employees
+- `GET /workers/:id` - Get employee by ID
+- `POST /workers` - Create new employee
+- `PUT /workers/:id` - Update existing employee
+- `DELETE /workers/:id` - Delete employee
+
+### Employee Data Structure
+```json
+{
+  "id": 1,
+  "name": "John Doe",
+  "role": "Developer",
+  "isActive": true
+}
+```
+
+## Installation and Running
+
+### Prerequisites
+- Node.js (version 18+)
+- PostgreSQL Server
+- npm
+
+### Database Setup
 ```bash
 cd Server
 npx prisma migrate dev
 ```
 
-4. **הרצת הפרויקט:**
+### Running the Application
 
-**Backend (פורט 3000):**
+**Backend (Port 3000):**
 ```bash
 cd Server
+npm install
 npm run start:dev
 ```
 
-**Frontend (פורט 5173):**
+**Frontend (Port 5173):**
 ```bash
 cd Client
+npm install
 npm run dev
 ```
 
-## API Endpoints
+## Technologies
 
-### עובדים (Workers)
-- `GET /workers` - קבלת כל העובדים
-- `POST /workers` - הוספת עובד חדש
-- `GET /workers/:id` - קבלת עובד לפי ID
-- `PUT /workers/:id` - עדכון עובד
-- `DELETE /workers/:id` - מחיקת עובד
+**Client-side**: React 18, TypeScript, Vite, Chakra UI, TanStack Query, Axios, Framer Motion
 
-### מבנה נתוני עובד
-```json
-{
-  "id": 1,
-  "name": "שם העובד",
-  "role": "תפקיד",
-  "isActive": true
-}
-```
+**Server-side**: NestJS, TypeScript, Prisma ORM, Class Validator, Class Transformer
 
-## פיתוח
+**Database**: PostgreSQL
 
-### הרצה במצב פיתוח
-```bash
-# Backend
-cd Server
-npm run start:dev
-
-# Frontend
-cd Client
-npm run dev
-```
-
-### בדיקות
-```bash
-# Backend tests
-cd Server
-npm run test
-
-# E2E tests
-npm run test:e2e
-```
-
-### בנייה לפרודקשן
-```bash
-# Backend
-cd Server
-npm run build
-
-# Frontend
-cd Client
-npm run build
-```
-
-## תרומה לפרויקט
-
-1. צור fork של הפרויקט
-2. צור branch חדש (`git checkout -b feature/amazing-feature`)
-3. בצע commit לשינויים (`git commit -m 'Add amazing feature'`)
-4. דחף ל-branch (`git push origin feature/amazing-feature`)
-5. פתח Pull Request
-
-## רישיון
-
-פרויקט זה הוא פרטי ולא מיועד לשימוש מסחרי.
+**Development tools**: npm, Vite, ESLint, Prettier
