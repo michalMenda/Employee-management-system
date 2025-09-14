@@ -77,7 +77,7 @@ npm run dev
 
 ## Technologies
 
-**Client-side**: React 18, TypeScript, Vite, Chakra UI, TanStack Query, Axios, Framer Motion
+**Client-side**: React 18, TypeScript, Vite, Chakra UI v2, TanStack Query, Axios, Framer Motion
 
 **Server-side**: NestJS, TypeScript, Prisma ORM, Class Validator, Class Transformer
 
