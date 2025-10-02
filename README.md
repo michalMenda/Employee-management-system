@@ -1,4 +1,4 @@
-# Employee Management 
+# Employee Management System
 
 ## Overview
 This project implements a complete employee management system connecting a React client, NestJS server, and PostgreSQL database. The system enables management of employees with full CRUD operations.
